@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="post-list" v-for="post in posts" :key="post.id">
+    <section v-for="post in posts" :key="post.id">
       <article>
         <h2 v-html="post.title.rendered"></h2>
         <p>Posted {{ timeFromNow(post.date) }}</p>
