@@ -5,6 +5,7 @@
         <h2 v-html="post.title.rendered"></h2>
         <p>Posted {{ timeFromNow(post.date) }}</p>
         <div v-html="post.excerpt.rendered"></div>
+        <button @click="readMore(post)" class="view-post">Read More</button>
       </article>
     </section>
   </div>
@@ -25,6 +26,9 @@ export default {
   methods: {
     timeFromNow(time) {
       return moment(time).fromNow()
+    },
+    readMore(post) {
+      this.$router.push(`/posts/${post.slug}`)
     }
   },
   mounted() {
@@ -33,7 +37,6 @@ export default {
         per_page: this.limit
       }
     }).then(res => {
-      console.log(res)
       this.posts = res.data
     })
   }

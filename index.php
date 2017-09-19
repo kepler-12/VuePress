@@ -11,9 +11,9 @@
 <body>
   <div id="app"></div>
   <!-- Use this during development for HMR -->
-  <!-- <script src="http://localhost:8080/dist/build.js"></script> -->
+  <script src="http://localhost:8080/dist/build.js"></script>
   <!-- Switch to this in production -->
-  <script src="<?= get_stylesheet_directory_uri() ?>/dist/build.js"></script>
+  <!-- <script src="<?= get_stylesheet_directory_uri() ?>/dist/build.js"></script>-->
 </body>
 
 </html>
