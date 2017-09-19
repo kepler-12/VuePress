@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>This page has an embedded "PostList" component.</h1>
+    <h1>This page has an embedded "PostList" component. Or does it?</h1>
     <PostList type="posts" limit="5" />
   </div>
 </template>
