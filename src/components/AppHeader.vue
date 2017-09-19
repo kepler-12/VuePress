@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header class="header">
     <p>This is the header</p>
 
     <nav>
@@ -15,3 +15,23 @@ export default {
   name: 'app-header'
 }
 </script>
+
+<style>
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em;
+}
+
+.header,
+.header a {
+  background-color: salmon;
+  color: #79251b;
+}
+
+.header a {
+  padding: 1em;
+  text-decoration: none;
+}
+</style>
