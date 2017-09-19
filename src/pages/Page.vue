@@ -18,17 +18,31 @@ export default {
       page: [],
     }
   },
-  mounted() {
-    const slug = this.$route.params.slug || 'home'
-    axios.get(`/wp-json/wp/v2/pages`, {
-      params: {
-        slug
-      }
-    }).then((res) => {
-      // Grab the first result from the returned array of pages
-      this.page = res.data[0]
-      this.loaded = true
-    })
+  computed: {
+    slug() {
+      return this.$route.params.slug || 'home';
+    }
   },
+  watch: {
+    '$route': 'get'
+  },
+  mounted() {
+    this.get()
+  },
+  methods: {
+    get() {
+      this.loaded = false
+
+      axios.get(`/wp-json/wp/v2/pages`, {
+        params: {
+          slug: this.slug
+        }
+      }).then((res) => {
+        // Grab the first result from the returned array of pages
+        this.page = res.data[0]
+        this.loaded = true
+      })
+    }
+  }
 }
 </script>

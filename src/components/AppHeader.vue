@@ -1,11 +1,9 @@
 <template>
   <header class="header">
-    <p>This is the header</p>
+    <router-link to="/">VuePress</router-link>
 
     <nav>
-      <router-link to="/">Home</router-link>
-      <router-link to="foo">Foo</router-link>
-      <router-link to="bar">Bar</router-link>
+      <router-link to="/sample-page">Sample Page</router-link>
     </nav>
   </header>
 </template>
