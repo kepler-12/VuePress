@@ -1,8 +1,14 @@
 <template>
   <div class="app" id="app">
     <app-header />
+
     <!-- component matched by the route will render here -->
-    <router-view class="main"></router-view>
+    <main class="main">
+      <transition name="fade">
+        <router-view :key="$route.fullPath"></router-view>
+      </transition>
+    </main>
+
     <app-footer />
   </div>
 </template>
@@ -45,5 +51,15 @@ html {
 .main {
   flex-grow: 1;
   padding: 1em;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .5s
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0
 }
 </style>

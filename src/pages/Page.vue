@@ -23,9 +23,6 @@ export default {
       return this.$route.params.slug || 'home';
     }
   },
-  watch: {
-    '$route': 'get'
-  },
   mounted() {
     this.get()
   },
