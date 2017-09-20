@@ -1,16 +1,25 @@
 <template>
-  <div class="app" id="app">
-    <app-header />
+  <div
+    class="app"
+    id="app"
+  >
+    <app-header :user="user" />
 
-    <!-- component matched by the route will render here -->
-    <main class="main">
-      <transition name="fade">
-        <router-view :key="$route.fullPath"></router-view>
-      </transition>
-    </main>
+    <div class="wrap">
 
-    <app-footer />
-  </div>
+      <!-- component matched by the route will render here -->
+      <!-- <transition name="fade" appear> -->
+      <router-view
+        :user="user"
+        :key="$route.fullPath"
+      ></router-view>
+        <!-- </transition> -->
+
+        <app-footer />
+
+    </div>
+
+    </div>
 </template>
 
 <script>
@@ -22,6 +31,14 @@ export default {
   components: {
     AppHeader,
     AppFooter
+  },
+  data() {
+    return {
+      user: {
+        name: 'Zack Krida',
+        email: 'zackwcote@gmail.com'
+      }
+    }
   }
 }
 </script>
@@ -43,14 +60,22 @@ html {
 
 .app {
   display: flex;
+}
+
+.wrap {
+  height: 100vh;
+  displaY: flex;
   flex-direction: column;
-  min-height: 100vh;
-  justify-content: space-between;
+  width: calc(100% - 200px);
 }
 
 .main {
   flex-grow: 1;
-  padding: 1em;
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .fade-enter-active,

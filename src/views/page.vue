@@ -1,10 +1,14 @@
 <template>
-  <div>
-    <div v-if="loaded">
-      <h1 v-html="page.title.rendered"></h1>
-      <div v-html="page.content.rendered"></div>
-    </div>
-  </div>
+  <main class="main">
+    <template v-if="loaded">
+      <header class="channel-header">
+        <h1 v-html="channel.title.rendered"></h1>
+        <div v-html="channel.content.rendered"></div>
+      </header>
+
+      </div>
+    </template>
+  </main>
 </template>
 
 <script>
@@ -35,11 +39,23 @@ export default {
           slug: this.slug
         }
       }).then((res) => {
-        // Grab the first result from the returned array of pages
-        this.page = res.data[0]
+        // Grab the first result from the returned array of channels
+        this.channel = res.data[0]
         this.loaded = true
       })
-    }
+    },
   }
 }
 </script>
+
+<style>
+h1,
+p {
+  margin: 0;
+}
+
+.channel-header {
+  padding: .5em 1em;
+  border-bottom: 1px solid #acaca9;
+}
+</style>

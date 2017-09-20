@@ -1,19 +1,14 @@
-import Page from '../pages/Page.vue'
-import Post from '../pages/Post.vue'
-import Archive from '../pages/Archive.vue'
+import Channel from '../views/channel.vue'
+import Page from '../views/page.vue'
 import axios from 'axios'
 
 export default [
   {
-    path: '/posts',
-    component: Archive
-  },
-  {
-    path: '/posts/:slug?',
-    component: Post
+    path: '/channel/:slug?',
+    component: Channel,
   },
   {
     path: '/:slug?',
-    component: Page
+    component: Page,
   },
 ]

@@ -1,14 +1,12 @@
 <template>
-  <div>
-    <section v-for="post in posts" :key="post.id">
-      <article>
-        <h2 v-html="post.title.rendered"></h2>
-        <p>Posted {{ timeFromNow(post.date) }}</p>
-        <div v-html="post.excerpt.rendered"></div>
-        <button @click="readMore(post)" class="view-post">Read More</button>
-      </article>
-    </section>
-  </div>
+  <nav>
+    <router-link
+      v-for="post in posts"
+      :key="post.id"
+      :to="getPath(post.slug)"
+      v-html=" '# ' + post.title.rendered"
+    ></router-link>
+  </nav>
 </template>
 
 <script>
@@ -16,7 +14,7 @@ import axios from 'axios'
 import moment from 'moment'
 
 export default {
-  name: 'post-list',
+  name: 'list',
   props: ['type', 'limit'],
   data() {
     return {
@@ -27,8 +25,8 @@ export default {
     timeFromNow(time) {
       return moment(time).fromNow()
     },
-    readMore(post) {
-      this.$router.push(`/posts/${post.slug}`)
+    getPath(slug) {
+      return this.type === 'pages' ? `/${slug}` : `/channel/${slug}`
     }
   },
   mounted() {
@@ -42,3 +40,9 @@ export default {
   }
 }
 </script>
+
+<style>
+a {
+  line-height: 1.4;
+}
+</style>
