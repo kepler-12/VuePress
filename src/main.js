@@ -3,6 +3,11 @@ import VueRouter from 'vue-router'
 import App from './App.vue'
 import routes from './util/routes.js'
 
+// For testing the word press rest api!
+// Remove when confident.
+import axios from "axios"
+window.axios = axios;
+
 Vue.use(VueRouter)
 
 const router = new VueRouter({
