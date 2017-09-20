@@ -8,7 +8,7 @@
       <div class="message-inner">
         <header class="message__header">
           <p class="message__author">{{ message.author_name }}</p>
-          <small class="date">{{ timeFromNow(message.date) }}</small>
+          <small class="date">{{ formattedDateTime(message.date) }}</small>
         </header>
 
         <div
@@ -26,7 +26,7 @@ export default {
   name: 'message',
   props: ['message', 'user'],
   methods: {
-    timeFromNow(time) {
+    formattedDateTime(time) {
       return moment(time).format('MMM Do | HH:mma')
     },
   }
