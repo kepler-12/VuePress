@@ -49,13 +49,16 @@ export default {
     this.$socket.on(`comments/${this.channel.id}`, (data) => {
       console.log(data)
       this.newMessages.push(data)
+      this.scrollToLatest()
+    })
+  },
+  methods: {
+    scrollToLatest() {
       this.$nextTick(() => {
         const messagesContainer = document.getElementById('messages');
         messagesContainer.scrollTop = messagesContainer.scrollHeight - messagesContainer.clientHeight;
       })
-    })
-  },
-  methods: {
+    },
     submitMessage() {
       this.$socket.emit('wp-rest', {
         path: 'comments',
