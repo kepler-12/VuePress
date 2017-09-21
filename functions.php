@@ -45,9 +45,11 @@ function login($request)
     if (is_wp_error($user)) {
         echo $user->get_error_message();
     }
+
     wp_set_auth_cookie($user->id, true);
 
-    return[
+    return [
+        $user,
         wp_generate_auth_cookie($user->id, 10000000),
         wp_create_nonce('wp_rest')
     ];
