@@ -44,7 +44,7 @@ export default {
     })
 
     this.$socket.on('posts', (data) => {
-      this.posts.push(data);
+      this.singles.push(data);
     });
   }
 }
