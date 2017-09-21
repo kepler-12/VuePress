@@ -11,12 +11,16 @@
 
 <body>
     <div id="app"></div>
+
+    <script>
+    window.nonce = "<?= wp_create_nonce('wp_rest') ?>"
+    </script>
+
     <!-- Use this during development for HMR -->
     <script src="http://localhost:8080/dist/build.js"></script>
+
     <!-- Switch to this in production -->
     <!-- <script src="<?= get_stylesheet_directory_uri() ?>/dist/build.js"></script> -->
-
-    <?php wp_footer(); ?>
 </body>
 
 </html>
