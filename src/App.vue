@@ -35,7 +35,7 @@ export default {
   data() {
     return {
       user: {
-        // id: 1,
+        id: 1,
         name: 'Zack Krida',
         email: 'zackwcote@gmail.com'
       }
