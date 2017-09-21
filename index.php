@@ -11,9 +11,13 @@
 <body>
   <div id="app"></div>
   <!-- Use this during development for HMR -->
+  <script>
+     window.nonce = "<?= wp_create_nonce('wp_rest') ?>"
+  </script>
   <script src="http://localhost:8080/dist/build.js"></script>
   <!-- Switch to this in production -->
   <!-- <script src="<?= get_stylesheet_directory_uri() ?>/dist/build.js"></script> -->
+
 </body>
 
 </html>

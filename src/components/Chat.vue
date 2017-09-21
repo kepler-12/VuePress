@@ -60,6 +60,9 @@ export default {
       })
     },
     submitMessage() {
+      const content = this.newMessage;
+      this.newMessage = '';
+
       this.$socket.emit('wp-rest', {
         path: 'comments',
         method: 'post',
@@ -67,7 +70,7 @@ export default {
         data: {
           author_email: this.user.email,
           author_name: this.user.name,
-          content: this.newMessage,
+          content,
           date: moment(),
           post: this.channel.id,
         }
