@@ -15,8 +15,9 @@
 
     <!-- Nonces for everyone! -->
     <script>
-    window.nonce = "<?= wp_create_nonce('wp_rest') ?>"
-    window.logoutNonce = "<?= wp_create_nonce('log-out') ?>"
+    window.user = <?= json_encode(wp_get_current_user()) ?>;
+    window.nonce = "<?= wp_create_nonce('wp_rest') ?>";
+    window.logoutNonce = "<?= wp_create_nonce('log-out') ?>";
     </script>
 
     <!-- Use this during development for HMR -->

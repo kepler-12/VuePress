@@ -38,6 +38,18 @@ add_filter('login_redirect', function () {
     return home_url();
 });
 
+// Auto-login users on registration
+// auto log in a user who has just signed up
+add_action('user_register', function ($user_id) {
+    wp_set_auth_cookie($user_id, false, is_ssl());
+});
+
+// Redirect after user registration
+add_filter('registration_redirect', function () {
+    return home_url();
+});
+
+
 // Attempted Auth Stuff
 add_action('rest_api_init', function () {
     register_rest_route('auth/v1', '/signin', array(
