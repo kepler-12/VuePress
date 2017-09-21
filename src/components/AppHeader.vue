@@ -103,7 +103,7 @@ nav {
   }
 }
 
-.router-link-exact-active {
+.router-link-exact-active:not([href="/create"]) {
   background-color: salmon;
 }
 

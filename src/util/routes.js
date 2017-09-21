@@ -8,6 +8,10 @@ export default [
     component: CreateChannel,
   },
   {
+    path: '/:slug',
+    component: Page,
+  },
+  {
     path: '/channel/:slug?',
     component: Channel,
   }
