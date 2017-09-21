@@ -26,8 +26,7 @@ add_action('rest_api_init', function () {
     ));
 });
 
-// Redirect all user-facing (non admin area) pages to '/'
-// (Vue.js is handling routing now)
+// Redirect non-logged in users
 add_action('template_redirect', function () {
     if (!is_user_logged_in()) {
         auth_redirect();
