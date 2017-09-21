@@ -12,6 +12,7 @@ add_filter('rest_allow_anonymous_comments', '__return_true');
 // Allow users to comment as much as they want :D
 add_filter('comment_flood_filter', '__return_false');
 
+
 add_action( 'rest_api_init', function () {
   register_rest_route( 'auth/v1', '/signin', array(
     'methods' => 'POST',
