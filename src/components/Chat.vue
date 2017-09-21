@@ -28,6 +28,7 @@
 <script>
 import axios from 'axios'
 import Message from '../components/Message.vue'
+import moment from 'moment'
 
 export default {
   name: 'Chat',
@@ -44,24 +45,30 @@ export default {
       return [...this.comments, ...this.newMessages]
     }
   },
+  mounted() {
+    this.$socket.on(`comments/${this.channel.id}`, (data) => {
+      console.log(data)
+      this.newMessages.push(data)
+      this.$nextTick(() => {
+        const messagesContainer = document.getElementById('messages');
+        messagesContainer.scrollTop = messagesContainer.scrollHeight - messagesContainer.clientHeight;
+      })
+    })
+  },
   methods: {
     submitMessage() {
-      axios.post(`/wp-json/wp/v2/comments`, {
-        author_email: this.user.email,
-        author_name: this.user.name,
-        content: this.newMessage,
-        date: moment(),
-        post: this.channel.id
-      }).then((res) => {
-        console.log(res.data)
-        this.newMessages.push(res.data)
-        this.newMessage = ''
-
-        this.$nextTick(() => {
-          const messagesContainer = document.getElementById('messages');
-          messagesContainer.scrollTop = messagesContainer.scrollHeight - messagesContainer.clientHeight;
-        })
-      });
+      this.$socket.emit('wp-rest', {
+        path: 'comments',
+        method: 'post',
+        data: {
+          author_email: this.user.email,
+          author_name: this.user.name,
+          content: this.newMessage,
+          date: moment(),
+          post: this.channel.id,
+          response: `comments/${this.channel.id}`
+        }
+      })
     }
   }
 }
