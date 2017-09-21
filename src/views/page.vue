@@ -1,13 +1,27 @@
 <template>
   <main class="main">
-    <template v-if="loaded">
-      <header class="channel-header">
-        <h1 v-html="channel.title.rendered"></h1>
-        <div v-html="channel.content.rendered"></div>
-      </header>
+    <div
+      class="page-wrap"
+      v-if="loaded"
+    >
+      <img
+        class="featured-image"
+        :src="page._embedded['wp:featuredmedia'][0].source_url"
+        alt=""
+      >
 
-      </div>
-    </template>
+        <header class="page-header">
+          <h1 v-html="page.title.rendered"></h1>
+        </header>
+
+        <div
+          class="page-content"
+          v-html="page.content.rendered"
+        >
+          </div>
+
+          </div>
+          </div class="page-wrap">
   </main>
 </template>
 
@@ -19,7 +33,7 @@ export default {
   data() {
     return {
       loaded: false,
-      page: [],
+      page: {},
     }
   },
   computed: {
@@ -36,11 +50,12 @@ export default {
 
       axios.get(`/wp-json/wp/v2/pages`, {
         params: {
-          slug: this.slug
+          slug: this.slug,
+          _embed: true
         }
       }).then((res) => {
-        // Grab the first result from the returned array of channels
-        this.channel = res.data[0]
+        // Grab the first result from the returned array of pages
+        this.page = res.data[0]
         this.loaded = true
       })
     },
@@ -54,8 +69,19 @@ p {
   margin: 0;
 }
 
-.channel-header {
+.page-wrap {
+  overflow-y: scroll;
+  flex-grow: 1;
+}
+
+.featured-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.page-header,
+.page-content {
   padding: .5em 1em;
-  border-bottom: 1px solid #acaca9;
 }
 </style>

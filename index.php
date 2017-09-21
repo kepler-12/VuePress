@@ -10,8 +10,10 @@
 </head>
 
 <body>
+    <!-- Our main app container and attachment point for vue -->
     <div id="app"></div>
 
+    <!-- Nonces for everyone! -->
     <script>
     window.nonce = "<?= wp_create_nonce('wp_rest') ?>"
     window.logoutNonce = "<?= wp_create_nonce('log-out') ?>"

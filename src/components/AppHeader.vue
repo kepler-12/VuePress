@@ -46,6 +46,7 @@ export default {
     'list': List
   },
   methods: {
+    addNewChannel() { },
     logout() {
       window.location.href = `/wp-login.php?action=logout&_wpnonce=${window.logoutNonce}`
     }
