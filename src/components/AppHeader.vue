@@ -47,7 +47,7 @@ export default {
   },
   methods: {
     logout() {
-      window.location.href = `/wp-login.php?action=logout&_wpnonce=${window.nonce}`
+      window.location.href = `/wp-login.php?action=logout&_wpnonce=${window.logoutNonce}`
     }
   }
 }

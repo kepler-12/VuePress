@@ -33,6 +33,11 @@ add_action('template_redirect', function () {
     }
 });
 
+// Redirect after login
+add_filter('login_redirect', function () {
+    return home_url();
+});
+
 // Attempted Auth Stuff
 add_action('rest_api_init', function () {
     register_rest_route('auth/v1', '/signin', array(
