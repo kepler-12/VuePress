@@ -68,6 +68,7 @@ export default {
         method: 'post',
         response: `comments/${this.channel.id}`,
         data: {
+          // author: this.user.id,
           author_email: this.user.email,
           author_name: this.user.name,
           content,

@@ -5,7 +5,12 @@
         class="appname"
         to="/"
       >VuePress</p>
-        <small>{{ user.name }} ({{ user.email }})</small>
+        <small>{{ user.name }}
+          <span
+            class="logout"
+            @click="logout()"
+          >(Logout)</span>
+        </small>
     </header>
 
     <section class="sidebar-list">
@@ -46,7 +51,9 @@ export default {
     'list': List
   },
   methods: {
-    addNewChannel() {
+    addNewChannel() { },
+    logout() {
+      window.location.href = `/wp-login.php?action=logout&_wpnonce=${window.logoutNonce}`
     }
   }
 }
@@ -133,5 +140,10 @@ nav {
   &:hover {
     opacity: 1;
   }
+}
+
+.logout {
+  display: inline;
+  cursor: pointer;
 }
 </style>

@@ -1,10 +1,11 @@
 <template>
   <nav>
     <router-link
-      v-for="post in posts"
-      :key="post.id"
-      :to="getPath(post.slug)"
-      v-html=" '# ' + post.title.rendered"
+      v-for="single in singles"
+      :key="single.id"
+      :to="getPath(single.slug)"
+      v-if="single.slug !== 'home'"
+      v-html="styledName(single)"
     ></router-link>
   </nav>
 </template>
@@ -18,10 +19,14 @@ export default {
   props: ['type', 'limit'],
   data() {
     return {
-      posts: []
+      singles: []
     }
   },
   methods: {
+    styledName(single) {
+      const prefix = this.type === 'posts' ? '# ' : ''
+      return prefix + single.title.rendered
+    },
     timeFromNow(time) {
       return moment(time).fromNow()
     },
@@ -35,7 +40,7 @@ export default {
         per_page: this.limit
       }
     }).then(res => {
-      this.posts = res.data
+      this.singles = res.data
     })
 
     this.$socket.on('posts', (data) => {

@@ -12,13 +12,11 @@ export default [
   {
     path: '/create',
     component: CreateChannel,
+    path: '/channel/:slug?',
+    component: Channel,
   },
   {
     path: '/channel/:slug?',
     component: Channel,
-  },
-  // {
-  //   path: '/:slug?',
-  //   component: Page,
-  // },
+  }
 ]

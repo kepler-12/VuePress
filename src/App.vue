@@ -35,9 +35,9 @@ export default {
   data() {
     return {
       user: {
-        // id: 1,
-        name: 'Zack Krida',
-        email: 'zackwcote@gmail.com'
+        id: window.user.data.ID,
+        name: window.user.data.display_name,
+        email: window.user.data.user_email
       }
     }
   }
