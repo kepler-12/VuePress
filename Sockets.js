@@ -21,15 +21,20 @@ io.on('connection', function(socket){
       url,
       data
     })
-    .catch(emit('error'))
     .then(emit(response))
+    .catch(emit('error'))
   });
+  socket.on('update', ({response, data}) => {
+    emit(response)({data});
+  })
 });
+
+
 
 //function for emmiting to all sockets currently connected to this port
 function emit(path){
   return function(res){
-    console.log(path, res.data);
+    console.log(path, res);
     return io.emit(path, res.data)
   }
 }

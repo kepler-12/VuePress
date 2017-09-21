@@ -37,6 +37,10 @@ export default {
     }).then(res => {
       this.posts = res.data
     })
+
+    this.$socket.on('posts', (data) => {
+      this.posts.push(data);
+    });
   }
 }
 </script>

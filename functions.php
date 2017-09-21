@@ -4,7 +4,7 @@
 add_theme_support('post-thumbnails');
 
 // stop redirection
-remove_action('template_redirect', 'redirect_canonical');
+// remove_action('template_redirect', 'redirect_canonical');
 
 // TODO: Remove when authentication is completed
 add_filter('rest_allow_anonymous_comments', '__return_true');

@@ -10,10 +10,15 @@
 
     <section class="sidebar-list">
       <h2 class="sidebar-heading">Channels
-        <span
-          class="add-new"
-          @click="addNewChannel"
-        >+</span>
+          <router-link
+            to="/create"
+          >
+          <span
+            to="/create"
+            class="add-new"
+            @click="addNewChannel"
+          >+</span>
+          </router-link>
       </h2>
       <list
         type="posts"
