@@ -60,13 +60,13 @@ export default {
       this.$socket.emit('wp-rest', {
         path: 'comments',
         method: 'post',
+        response: `comments/${this.channel.id}`,
         data: {
           author_email: this.user.email,
           author_name: this.user.name,
           content: this.newMessage,
           date: moment(),
           post: this.channel.id,
-          response: `comments/${this.channel.id}`
         }
       })
     }

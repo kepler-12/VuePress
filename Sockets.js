@@ -1,28 +1,32 @@
 const app = require('express')();
 const http = require('http').Server(app);
+
+// For Incoming and Outgoing connections
 const io = require('socket.io')(http);
+
+//For all HTTP Requests
 const axios = require('axios');
 
-app.get('/', function(req, res){
-  res.send("Silence is golden");
-});
-
+//The base url for all of our axios requests
 const baseUrl = "http://vuepress.dev/wp-json/wp/v2/"
 
+//Instatiate a socket.io connection
 io.on('connection', function(socket){
-  console.log('a user connected');
+  //Listen for the event 'wp-rest' and preform function
   socket.on('wp-rest', ({method, path, data, response}) => {
     const url = baseUrl+path
-    return axios({
+     //Submit the ajax request to the wordpress restapi
+    axios({
       method,
       url,
       data
     })
-    .catch(error)
+    .catch(emit('error'))
     .then(emit(response))
-  })
+  });
 });
 
+//function for emmiting to all sockets currently connected to this port
 function emit(path){
   return function(res){
     console.log(path, res.data);
@@ -30,12 +34,6 @@ function emit(path){
   }
 }
 
-
-function error(res){
-  console.error("error", res)
-  return io.emit('error')
-}
-
 http.listen(3020, function(){
   console.log('listening on *:3020');
-});
+})
