@@ -39,7 +39,7 @@ export default {
       // When new channels are created, push them to the 'singles' list
       this.$socket.on('posts', (data) => {
         this.singles.push(data)
-        this.$router.push(this.getPath(data.slug))
+        // this.$router.push(this.getPath(data.slug))
       });
     },
     timeFromNow(time) {
