@@ -14,29 +14,17 @@
     </header>
 
     <section class="sidebar-list">
+
       <h2 class="sidebar-heading">Channels
-          <router-link
-            to="/create"
-          >
-          <span
-            to="/create"
-            class="add-new"
-            @click="addNewChannel"
-          >+</span>
-          </router-link>
+          <router-link to="/create" class="add-new">+</router-link>
       </h2>
-      <list
-        type="posts"
-        :limit="10"
-      />
+
+      <list type="posts" :limit="10" />
     </section>
 
     <section class="sidebar-list">
       <h2 class="sidebar-heading">Pages</h2>
-      <list
-        type="pages"
-        :limit="10"
-      />
+      <list type="pages" :limit="10" />
     </section>
   </aside>
 </template>
@@ -51,9 +39,9 @@ export default {
     'list': List
   },
   methods: {
-    addNewChannel() { },
     logout() {
-      window.location.href = `/wp-login.php?action=logout&_wpnonce=${window.logoutNonce}`
+      const logoutNonce = document.head.querySelector('meta[name="logout-nonce"]').content
+      window.location.href = `/wp-login.php?action=logout&_wpnonce=${logoutNonce}`
     }
   }
 }
@@ -125,7 +113,7 @@ nav {
   display: block;
 }
 
-.add-new {
+a.add-new {
   float: right;
   border-radius: 999999px;
   border: 1px solid currentcolor;
@@ -136,6 +124,7 @@ nav {
   width: 1.4em;
   cursor: pointer;
   opacity: .75;
+  padding: 0;
 
   &:hover {
     opacity: 1;

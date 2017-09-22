@@ -21,20 +21,12 @@ export default {
       content: "",
     }
   },
-  mounted() {
-
-  },
   methods: {
     createChannel(e) {
-      axios({
-        headers: { 'X-WP-Nonce': nonce },
-        method: 'POST',
-        url: '/wp-json/wp/v2/posts',
-        data: {
+      axios.post('/wp-json/wp/v2/posts', {
           title: this.title,
           content: this.content,
-          status: "publish"
-        }
+          status: 'publish'
       })
       .then(res => {
         this.$socket.emit('update', {

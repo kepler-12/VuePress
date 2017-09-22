@@ -1,25 +1,16 @@
 <template>
-  <div
-    class="app"
-    id="app"
-  >
+  <div class="app" id="app">
     <app-header :user="user" />
 
     <div class="wrap">
 
       <!-- component matched by the route will render here -->
-      <!-- <transition name="fade" appear> -->
-      <router-view
-        :user="user"
-        :key="$route.fullPath"
-      ></router-view>
-        <!-- </transition> -->
+      <router-view :user="user" :key="$route.fullPath"></router-view>
 
-        <app-footer />
+      <app-footer />
 
     </div>
-
-    </div>
+  </div>
 </template>
 
 <script>
@@ -35,9 +26,9 @@ export default {
   data() {
     return {
       user: {
-        id: window.user.data.ID,
-        name: window.user.data.display_name,
-        email: window.user.data.user_email
+        id: user.data.ID,
+        name: user.data.display_name,
+        email: user.data.user_email
       }
     }
   }

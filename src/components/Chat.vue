@@ -63,19 +63,17 @@ export default {
       const content = this.newMessage;
       this.newMessage = '';
 
-      this.$socket.emit('wp-rest', {
-        path: 'comments',
-        method: 'post',
-        response: `comments/${this.channel.id}`,
-        data: {
-          // author: this.user.id,
-          author_email: this.user.email,
-          author_name: this.user.name,
+      axios.post(`/wp-json/wp/v2/comments`, {
+          author: this.user.id,
           content,
           date: moment(),
           post: this.channel.id,
-        }
-      })
+      }).then(res => {
+        this.$socket.emit('event', {
+          response: `comments/${this.channel.id}`,
+          data: res.data
+        })
+      }).catch(console.error)
     }
   }
 }
