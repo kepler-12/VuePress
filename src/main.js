@@ -12,7 +12,7 @@ window.axios.defaults.headers.common['X-WP-Nonce'] =
 Vue.use(VueRouter)
 
 // Add the socket instance to Vue
-Vue.prototype.$socket = io(`//${window.location.host}:3020`);
+Vue.prototype.$socket = io(`http://socket.kepler12.com`);
 
 const router = new VueRouter({
   mode: 'history',
