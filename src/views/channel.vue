@@ -1,6 +1,7 @@
 <template>
   <main class="main">
     <template v-if="loaded">
+
       <header class="channel-header">
         <h1 v-html="channel.title.rendered"></h1>
         <div v-html="channel.content.rendered"></div>
@@ -12,6 +13,7 @@
         :comments="comments"
       />
       </div>
+
     </template>
   </main>
 </template>
