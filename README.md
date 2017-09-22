@@ -30,3 +30,20 @@ For detailed explanation on how things work, consult the [docs for vue-loader](h
 	- Uncheck “ Enable threaded (nested) comments  (x) levels deep”
 	- Uncheck Comment must be manually approved
 	- Uncheck Comment author must have a previously approved comment
+
+## Socket Setup
+``` bash
+# -- Ubuntu firewall
+# open up port
+sudo ufw allow 3020
+
+# reload the firewall
+sudo ufw reload
+
+# Install node process manager
+sudo npm install -g pm2
+
+# Start the node process
+cd install/wp-content/theme/vuepress
+pm2 start Socket.js
+```

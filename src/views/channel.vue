@@ -61,7 +61,7 @@ export default {
     loadComments() {
       axios.get(`/wp-json/wp/v2/comments`, {
         params: {
-          per_page: 50,
+          per_page: 20000,
           post: this.channel.id,
           order: 'asc'
         }

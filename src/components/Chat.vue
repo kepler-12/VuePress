@@ -42,6 +42,7 @@ export default {
   },
   computed: {
     allMessages() {
+      this.scrollToLatest()
       return [...this.comments, ...this.newMessages]
     }
   },
