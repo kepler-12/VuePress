@@ -1,9 +1,11 @@
+#ENV
+.env
+
 # JS
 node_modules/
 dist/
 npm-debug.log
 yarn-error.log
-
 # PHP
 vendor/
 

@@ -1,5 +1,6 @@
 const app = require('express')();
 const http = require('http').Server(app);
+require('dotenv').config()
 
 // For Incoming and Outgoing connections
 const io = require('socket.io')(http);
@@ -8,8 +9,8 @@ const io = require('socket.io')(http);
 const axios = require('axios');
 
 //The base url for all of our axios requests
-const baseUrl = "http://vuepress.dev/wp-json/wp/v2/"
-
+const baseUrl = `${process.env.BASE_URL}/wp-json/wp/v2/`
+console.log(baseUrl);
 //Instatiate a socket.io connection
 io.on('connection', function (socket) {
   //Listen for the event 'wp-rest' and preform function

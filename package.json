@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
+    "dotenv": "^4.0.0",
     "moment": "^2.18.1",
     "socket.io": "^2.0.3",
     "socket.io-client": "^2.0.3",
