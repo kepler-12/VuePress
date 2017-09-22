@@ -29,8 +29,8 @@ export default {
           status: 'publish'
       })
       .then(res => {
-        this.$socket.emit('update', {
-          response: "posts",
+        this.$socket.emit('event', {
+          response: 'posts',
           data: res.data
         })
       })

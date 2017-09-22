@@ -1,42 +1,41 @@
 <template>
   <aside class="app-header">
+
+    <!-- Header -->
     <header class="sidebar-header">
-      <p
-        class="appname"
-        to="/"
-      >VuePress</p>
-        <small>{{ user.name }}
-          <span
-            class="logout"
-            @click="logout()"
-          >(Logout)</span>
-        </small>
+      <p class="appname" to="/">VuePress</p>
+      <small>
+        {{ user.name }}
+        <span class="logout" @click="logout()">(Logout)</span>
+      </small>
     </header>
 
+    <!-- Channel Listing -->
     <section class="sidebar-list">
-
-      <h2 class="sidebar-heading">Channels
-          <router-link to="/create" class="add-new">+</router-link>
+      <h2 class="sidebar-heading">
+        Channels
+        <router-link to="/create" class="add-new">+</router-link>
       </h2>
-
       <list type="posts" :limit="10" />
     </section>
 
+    <!-- Pages Listing -->
     <section class="sidebar-list">
       <h2 class="sidebar-heading">Pages</h2>
       <list type="pages" :limit="10" />
     </section>
+
   </aside>
 </template>
 
 <script>
-import List from '../components/List.vue'
+import list from '../components/List.vue'
 
 export default {
   name: 'app-header',
   props: ['user'],
   components: {
-    'list': List
+    list
   },
   methods: {
     logout() {

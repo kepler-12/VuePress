@@ -22,6 +22,15 @@ export default {
     }
   },
   methods: {
+    getItems() {
+      axios.get(`/wp-json/wp/v2/${this.type}`, {
+        params: {
+          per_page: this.limit
+        }
+      }).then(res => {
+        this.singles = res.data
+      })
+    },
     styledName(single) {
       const prefix = this.type === 'posts' ? '# ' : ''
       return prefix + single.title.rendered
@@ -34,16 +43,11 @@ export default {
     }
   },
   mounted() {
-    axios.get(`/wp-json/wp/v2/${this.type}`, {
-      params: {
-        per_page: this.limit
-      }
-    }).then(res => {
-      this.singles = res.data
-    })
+    this.getItems()
 
+    // When new channels are created, push them to the 'singles' list
     this.$socket.on('posts', (data) => {
-      this.singles.push(data);
+      this.singles.push(data)
     });
   }
 }

@@ -1,21 +1,17 @@
 <template>
   <article class="message">
-    <img
-      class="avatar"
-      :src="message.author_avatar_urls['48']"
-      alt=""
-    >
-      <div class="message-inner">
-        <header class="message__header">
-          <p class="message__author">{{ message.author_name }}</p>
-          <small class="date">{{ formattedDateTime(message.date) }}</small>
-        </header>
 
-        <div
-          class="message-content"
-          v-html="message.content.rendered"
-        ></div>
-      </div>
+    <img class="avatar" :src="message.author_avatar_urls['48']">
+
+    <div class="message-inner">
+      <header class="message__header">
+        <p class="message__author">{{ message.author_name }}</p>
+        <small class="date">{{ formattedDateTime(message.date) }}</small>
+      </header>
+
+      <div class="message-content" v-html="message.content.rendered"></div>
+    </div>
+
   </article>
 </template>
 
