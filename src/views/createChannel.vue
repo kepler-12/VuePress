@@ -2,8 +2,8 @@
   <main class="main">
     <form v-on:submit.prevent="createChannel()">
       <h1>Create A New Channel</h1>
-      <input type="text"  v-model="title" placeholder="Title" name="title" />
-      <input type=""  v-model="content" placeholder="Content" name="content" />
+      <input type="text" v-model="title" placeholder="Title" name="title" />
+      <input type="text" v-model="content" placeholder="Content" name="content" />
       <input type="submit" value="Create" />
     </form>
   </main>
