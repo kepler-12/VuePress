@@ -2,6 +2,12 @@
 
 > vue/wordpress spa
 
+## Prerequisites
+
+Need a WordPress Install up and running.
+
+Run `git clone git@github.com:kepler-12/VuePress.git`
+
 ## Build Setup
 
 ``` bash
@@ -21,17 +27,18 @@ For detailed explanation on how things work, consult the [docs for vue-loader](h
 ## Required WordPress Settings
 
 - General
-	- Check “Anyone can register”
+  - Check “Anyone can register”
   - New User Default Role should be "Author"
 - Reading
-	- Static front page w/ slug of “home”
+  - Static front page w/ slug of “home”
 - Discussion
-	- Uncheck “Users must be registered and logged in to comment“
-	- Uncheck “ Enable threaded (nested) comments  (x) levels deep”
-	- Uncheck Comment must be manually approved
-	- Uncheck Comment author must have a previously approved comment
+  - Uncheck “Users must be registered and logged in to comment“
+  - Uncheck “ Enable threaded (nested) comments  (x) levels deep”
+  - Uncheck Comment must be manually approved
+  - Uncheck Comment author must have a previously approved comment
 
 ## Socket Setup
+
 ``` bash
 # -- Ubuntu firewall
 # open up port
