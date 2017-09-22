@@ -11,8 +11,10 @@ window.axios = axios;
 
 Vue.use(VueRouter)
 
+
+
 //Add the socket instance to the VUE
-Vue.prototype.$socket = io('http://localhost:3020');
+Vue.prototype.$socket = io(`//${window.location.host}:3020`);
 
 const router = new VueRouter({
   mode: 'history',
