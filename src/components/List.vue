@@ -35,6 +35,12 @@ export default {
       const prefix = this.type === 'posts' ? '# ' : ''
       return prefix + single.title.rendered
     },
+    listenForNew() {
+      // When new channels are created, push them to the 'singles' list
+      this.$socket.on('posts', (data) => {
+        this.singles.push(data)
+      });
+    },
     timeFromNow(time) {
       return moment(time).fromNow()
     },
@@ -45,10 +51,9 @@ export default {
   mounted() {
     this.getItems()
 
-    // When new channels are created, push them to the 'singles' list
-    this.$socket.on('posts', (data) => {
-      this.singles.push(data)
-    });
+    if (this.type === 'posts') {
+      this.listenForNew();
+    }
   }
 }
 </script>
